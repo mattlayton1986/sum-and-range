@@ -2,12 +2,18 @@
 // Return value: Array of all numbers from start to end parameters
 // Note: range() is starting- and ending-value inclusive, i.e., [start, end] rather than [start, end).
 function range(start, end) {
-  var digits = [];
-  for (var i=start; i <= end; i++) {
-    digits.push(i);
+  if (typeof start != "number" || typeof end != "number") {
+    try {
+      throw new TypeError("Parameters must be of type 'number'.");
+    } catch (e) {
+      console.log(e.message);
+    }
   }
-  console.log(digits);
-  return digits;
+  var numberRange = [];
+  for (var i=start; i <= end; i++) {
+    numberRange.push(i);
+  }
+  return numberRange;
 }
 
 // Parameters: Array-based range of numbers
@@ -17,7 +23,6 @@ function sum(range) {
   for (var i=0; i < range.length; i++) {
     total += range[i];
   }
-  console.log(total);
   return total;
 }
 
@@ -26,7 +31,6 @@ function product(range) {
   for (var i = 0; i < range.length; i++) {
     total *= range[i];
   }
-  console.log(total);
   return total;
 }
 
