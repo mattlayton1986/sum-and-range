@@ -1,7 +1,7 @@
 // Parameters: start and end of range
 // Return value: Array of all numbers from start to end parameters
 // Note: range() is starting- and ending-value inclusive, i.e., [start, end] rather than [start, end).
-function range(start, end) {
+function range(start, end, increment = 1) {
   if (typeof start != "number" || typeof end != "number") {
     try {
       throw new TypeError("Parameters must be of type 'number'.");
@@ -10,7 +10,7 @@ function range(start, end) {
     }
   }
   var numberRange = [];
-  for (var i=start; i <= end; i++) {
+  for (var i = start; (increment < 0) ? (i >= end) : (i <= end); i += increment) {
     numberRange.push(i);
   }
   return numberRange;
